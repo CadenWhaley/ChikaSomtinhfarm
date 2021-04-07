@@ -2,7 +2,7 @@
 _G.Enabled = true
 
 --//Script//--
-wait(0.1)
+wait(0.3)
 if game:IsLoaded() then
 	local startergui = game:GetService("StarterGui")
 	startergui:SetCore("SendNotification",{
