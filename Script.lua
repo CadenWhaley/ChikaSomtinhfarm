@@ -39,7 +39,7 @@ if not game:IsLoaded() then
 		function CrateTP()
 			for k,v in pairs(game:GetService("Workspace").MouseIgnore:GetDescendants()) do
 				if v:IsA("ClickDetector")  and v.Parent.Name == 'ClickBox'  then
-					game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(v.Parent.CFrame.X,v.Parent.CFrame.Y + -5,v.Parent.CFrame.Z)
+					game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart").CFrame = CFrame.new(v.Parent.CFrame.X,v.Parent.CFrame.Y + -5,v.Parent.CFrame.Z)
 					wait(0.2)
 					fireclickdetector(v)
 				end
@@ -47,16 +47,13 @@ if not game:IsLoaded() then
 		end
 
 		function AntiAfkIg()
-			local GC = getconnections or get_signal_cons
-			if GC then
-				for i,v in pairs(GC(Players.LocalPlayer.Idled)) do
-					if v["Disable"] then
-						v["Disable"](v)
-					elseif v["Disconnect"] then
-						v["Disconnect"](v)
-					end
-				end
-			end
+			local vu = game:GetService("VirtualUser")
+			game:GetService("Players").LocalPlayer.Idled:connect(function()
+				vu:Button2Down(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+				wait(1)
+				vu:Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+			end)
+		end
 
 
 			local PlaceID = game.PlaceId
