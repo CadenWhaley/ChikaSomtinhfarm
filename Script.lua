@@ -2,10 +2,7 @@
 _G.Enabled = true
 
 --//Script//--
-if not game:IsLoaded() then
-	wait(5)
-	if game:IsLoaded() then
-		wait(2)
+	wait(6)
 		local startergui = game:GetService("StarterGui")
 		startergui:SetCore("SendNotification",{
 			Title = "Auto Farm Started!";
@@ -143,7 +140,5 @@ if not game:IsLoaded() then
 					CheckIfCrateIsThere()
 					wait(0.1)
 					CrateTP()
-				end
-			end
-		end
 	end
+end
