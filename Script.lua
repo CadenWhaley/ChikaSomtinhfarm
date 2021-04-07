@@ -2,50 +2,51 @@
 _G.Enabled = true
 
 --//Script//--
+wait(0.1)
 if game:IsLoaded() then
-local startergui = game:GetService("StarterGui")
-startergui:SetCore("SendNotification",{
-	Title = "Auto Farm Started!";
-	Text = "Just sit back and watch. Make Sure to give the script a few seconds to work!";
-	Duration = 5;
+	local startergui = game:GetService("StarterGui")
+	startergui:SetCore("SendNotification",{
+		Title = "Auto Farm Started!";
+		Text = "Just sit back and watch. Make Sure to give the script a few seconds to work!";
+		Duration = 5;
 	})
 
 
-function CheckIfLoaded()
-	workspace.CurrentCamera.CameraType = Enum.CameraType.Follow
-	game.Lighting:WaitForChild("Blur").Enabled = false
-	game.Players.LocalPlayer.PlayerGui:WaitForChild("Main").Enabled = true
-	game.Players.LocalPlayer.PlayerGui:WaitForChild("Intro").Enabled = false
-end
+	function CheckIfLoaded()
+		workspace.CurrentCamera.CameraType = Enum.CameraType.Follow
+		game.Lighting:WaitForChild("Blur").Enabled = false
+		game.Players.LocalPlayer.PlayerGui:WaitForChild("Main").Enabled = true
+		game.Players.LocalPlayer.PlayerGui:WaitForChild("Intro").Enabled = false
+	end
 
-wait(1)
+	wait(1)
 
-function Noclip()
-	Clip = false
-	wait(0.1)
-	local function Noclip()
-		if Clip == false and game.Players.LocalPlayer.Character ~= nil then
-			for _, child in pairs(game.Players.LocalPlayer.Character:GetDescendants()) do
-				if child:IsA("BasePart") and child.CanCollide == true  then
-					child.CanCollide = false
+	function Noclip()
+		Clip = false
+		wait(0.1)
+		local function Noclip()
+			if Clip == false and game.Players.LocalPlayer.Character ~= nil then
+				for _, child in pairs(game.Players.LocalPlayer.Character:GetDescendants()) do
+					if child:IsA("BasePart") and child.CanCollide == true  then
+						child.CanCollide = false
+					end
 				end
 			end
 		end
+		game:GetService('RunService').Stepped:Connect(Noclip)
 	end
-	game:GetService('RunService').Stepped:Connect(Noclip)
-end
-function CrateTP()
-	for k,v in pairs(game:GetService("Workspace").MouseIgnore:GetDescendants()) do
-		if v:IsA("ClickDetector")  and v.Parent.Name == 'ClickBox'  then
-			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(v.Parent.CFrame.X,v.Parent.CFrame.Y + -5,v.Parent.CFrame.Z)
-			wait(0.2)
-			fireclickdetector(v)
+	function CrateTP()
+		for k,v in pairs(game:GetService("Workspace").MouseIgnore:GetDescendants()) do
+			if v:IsA("ClickDetector")  and v.Parent.Name == 'ClickBox'  then
+				game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(v.Parent.CFrame.X,v.Parent.CFrame.Y + -5,v.Parent.CFrame.Z)
+				wait(0.2)
+				fireclickdetector(v)
+			end
 		end
 	end
-end
 
 
-	
+
 	local PlaceID = game.PlaceId
 	local AllIDs = {}
 	local foundAnything = ""
@@ -56,7 +57,7 @@ end
 	end)
 	if not File then
 		table.insert(AllIDs, actualHour)
-	writefile("ServersAlreadyJoined.json", game:GetService('HttpService'):JSONEncode(AllIDs))
+		writefile("ServersAlreadyJoined.json", game:GetService('HttpService'):JSONEncode(AllIDs))
 	end
 	function TPStuffLol()
 		local Site;
@@ -114,24 +115,24 @@ end
 			end)
 		end
 	end
-	
-	
-	
-	
-	
-function CheckIfCrateIsThere()
+
+
+
+
+
+	function CheckIfCrateIsThere()
 		if not game:GetService("Workspace").MouseIgnore:FindFirstChild("ChikaraCrate") then
-		Teleport()
+			Teleport()
+		end
 	end
-end
-	
-if _G.Enabled == true then
-Noclip()
-CheckIfLoaded()
-while wait() do
-CheckIfCrateIsThere()
-wait(0.1)
-CrateTP()
-end
-end
+
+	if _G.Enabled == true then
+		Noclip()
+		CheckIfLoaded()
+		while wait() do
+			CheckIfCrateIsThere()
+			wait(0.1)
+			CrateTP()
+		end
+	end
 end
