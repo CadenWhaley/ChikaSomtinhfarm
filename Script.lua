@@ -50,7 +50,6 @@ function FirClickDetectorStuff()
 	for _,v in pairs(game:GetService("Workspace").MouseIgnore:GetDescendants()) do
 		if v:IsA("ClickDetector")  and v.Parent.Name == 'ClickBox'  then
 			fireclickdetector(v)
-			wait(.1)
 		end
 	end
 end
