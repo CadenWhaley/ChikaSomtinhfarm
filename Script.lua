@@ -89,7 +89,7 @@ _G.Enabled = true
 							else
 								if tonumber(actualHour) ~= tonumber(Existing) then
 									local delFile = pcall(function()
-										delfile("NotSameServers.json")
+							delfile("ServersAlreadyJoined.json")
 										AllIDs = {}
 										table.insert(AllIDs, actualHour)
 									end)
@@ -101,7 +101,7 @@ _G.Enabled = true
 							table.insert(AllIDs, ID)
 							wait()
 							pcall(function()
-								writefile("NotSameServers.json", game:GetService('HttpService'):JSONEncode(AllIDs))
+					writefile("ServersAlreadyJoined.json", game:GetService('HttpService'):JSONEncode(AllIDs))
 								wait()
 								game:GetService("TeleportService"):TeleportToPlaceInstance(PlaceID, ID, game.Players.LocalPlayer)
 							end)
