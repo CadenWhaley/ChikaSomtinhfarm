@@ -1,11 +1,7 @@
 
 --//Settings//--
 _G.Enabled = true
-local AutoDie = false -- Kills the Player at a Certain Time
-local AutoDieWaitTime = 0 -- Number here
-local TPDie = true -- Teleports the Player to a new Server Once the player Dies
-local RetryDie = false -- Retries the script if the player dies
-local RetryDieWaitTime = 0
+local TPTime = 5 -- Put whatever number you want there
 --//Script//--
 local WaitForTheDamGui= game:WaitForChild("StarterGui")
 wait(6)
@@ -137,48 +133,21 @@ function Teleport()
 	end
 end
 
--- I got so fucking lazy I wrote this so I COULD GO TO BED FOR FUCK SAKE UGH
-function CheckIfPlayerDied()
-	if TPDie == true then
-	game.Players.LocalPlayer.Character.Humanoid.Died:connect(function()
-		Teleport()
-		end)
-	else
-		if RetryDie == true then
-			wait(RetryDieWaitTime)
-			
-		end
-	end
-end
-
-function AutoDieKillFunction ()
-	if AutoDie == true then
-		wait(AutoDieWaitTime)
-		game.Players.LocalPlayer.Character.Humanoid.Health = 0
-	end
-end
-
 function CheckIfCrateIsThere()
 	if not game:GetService("Workspace").MouseIgnore:FindFirstChild("ChikaraCrate") then
 		Teleport()
 	end
 end
 
-function RetryScript ()
-	while wait() do
-		CheckIfPlayerDied()
-		CheckIfLoaded()
-		CheckIfCrateIsThere()
-		TPStuffIdfk()
-	end
+function TPAuto()
+	wait(TPTime)
+	Teleport()
 end
 
 if _G.Enabled == true then
 	Noclip()
 	AntiAfkIg()
 	while wait() do
-		AutoDieKillFunction()
-		CheckIfPlayerDied()
 		CheckIfLoaded()
 		CheckIfCrateIsThere()
 		TPStuffIdfk()
@@ -186,4 +155,4 @@ if _G.Enabled == true then
 end
 
 
--- I hate my life why do I do this to myself for fuck sake
+-- I gave up lol
