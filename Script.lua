@@ -4,7 +4,7 @@ _G.Enabled = true
 local AutoDie = false -- Kills the Player at a Certain Time
 local AutoDieWaitTime = 0 -- Number here
 local TPDie = true -- Teleports the Player to a new Server Once the player Dies
-local RetryDie = false -- Retries the script if a player dies
+local RetryDie = false -- Retries the script if the player dies
 local RetryDieWaitTime = 0
 --//Script//--
 local WaitForTheDamGui= game:WaitForChild("StarterGui")
@@ -177,6 +177,7 @@ if _G.Enabled == true then
 	Noclip()
 	AntiAfkIg()
 	while wait() do
+		AutoDieKillFunction()
 		CheckIfPlayerDied()
 		CheckIfLoaded()
 		CheckIfCrateIsThere()
