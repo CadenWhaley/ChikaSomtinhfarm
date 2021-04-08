@@ -152,6 +152,7 @@ if _G.Enabled == true then
 	Noclip()
 	AntiAfkIg()
 	while wait() do
+		CheckIfPlayerDied()
 		CheckIfLoaded()
 		CheckIfCrateIsThere()
 		TPStuffIdfk()
