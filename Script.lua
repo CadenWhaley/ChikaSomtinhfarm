@@ -2,9 +2,10 @@
 --//Settings//--
 _G.Enabled = true
 local TPTime = 5 -- Put whatever number you want there
+local ScriptLoadWaitTime = 6 -- DO NOT PUT IT LOWER THAN 5 OR IMA SLAP U
 --//Script//--
 local WaitForTheDamGui= game:WaitForChild("StarterGui")
-wait(6)
+wait(ScriptLoadWaitTime)
 
 local startergui = game:GetService("StarterGui")
 startergui:SetCore("SendNotification",{
@@ -148,6 +149,7 @@ if _G.Enabled == true then
 	Noclip()
 	AntiAfkIg()
 	while wait() do
+		TPAuto()
 		CheckIfLoaded()
 		CheckIfCrateIsThere()
 		TPStuffIdfk()
